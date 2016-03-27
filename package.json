@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A sample Beep Boop Node.js Slackbot",
   "main": "index.js",
-  "devDependencies": { "mathjs": "*" },
   "scripts": {
     "start": "node index.js"
   },
@@ -23,6 +22,7 @@
   },
   "homepage": "https://github.com/ndarville/starter-node-bot#readme",
   "dependencies": {
-    "botkit": "0.0.5"
+    "botkit": "0.0.5",
+    "mathjs": "^3.0.0"
   }
 }
