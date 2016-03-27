@@ -1,4 +1,5 @@
 var Botkit = require('botkit')
+var Mathjs = require("mathjs");
 
 // Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN
@@ -66,3 +67,18 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
+
+// Custom scripts
+controller.hears(['=', '(.*)'], 'direct_message,direct_mention,ambient', function (bot, message) {
+    if (message.match[0] == '=') {
+        var node = null;
+        try {
+            message.text = message.text.replace('=', '');
+            node = Mathjs.parse(message.text);
+            bot.reply(message, Mathjs.format(node.compile().eval()));
+        }
+        catch (err) {
+            bot.reply(message, err.toString());
+        }
+    }
+});
