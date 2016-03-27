@@ -26,8 +26,8 @@ controller.hears(['hello', 'hi', 'sup', 'howdy', 'yo'], ['direct_mention'], func
   bot.reply(message, 'sup')
 })
 
-controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
-  bot.reply(message, 'Hello.')
+controller.hears(['hello', 'hi', 'sup', 'howdy', 'yo'], ['direct_mention'], function (bot, message) {
+  bot.reply(message, 'Wuddup.')
   bot.reply(message, 'It\'s nice to talk to you directly.')
 })
 
