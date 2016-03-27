@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beepboophq/node-slack-bot.git"
+    "url": "git+https://github.com/ndarville/starter-node-bot.git"
   },
   "keywords": [
     "slackbot",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beepboophq/node-slack-bot/issues"
+    "url": "https://github.com/ndarville/starter-node-bot/issues"
   },
-  "homepage": "https://github.com/beepboophq/node-slack-bot#readme",
+  "homepage": "https://github.com/ndarville/starter-node-bot#readme",
   "dependencies": {
     "botkit": "0.0.5"
   }
