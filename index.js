@@ -74,7 +74,7 @@ controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, mess
 // ==============
 
 // Maths bot
-controller.hears(['=', '(.*)'], ['direct_message', 'direct_mention', 'ambient'], function (bot, message) {
+controller.hears(['=', '(.*)'], 'direct_message,direct_mention,ambient', function (bot, message) {
     if (message.match[0] == '=') {
         var node = null;
         try {
