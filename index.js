@@ -1,5 +1,5 @@
 var Botkit = require('botkit');
-var Mathjs = require("mathjs");
+var Mathjs = require('mathjs');
 
 // Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN
