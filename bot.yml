@@ -3,7 +3,7 @@ description: A simple node.js starter bot for Beep Boop
 avatar: resources/avatar.png
 config:
   - name: GOOGLE_TOKEN
-    friendly: Google API key
+    friendly_name: Google API key
     info: API key used for Google Translate
     type: secret
     global: true
