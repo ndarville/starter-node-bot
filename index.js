@@ -23,11 +23,13 @@ controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
+// Mention listener
 controller.hears(['hello', 'hi', 'sup', 'howdy', 'yo'], ['direct_mention'], function (bot, message) {
   bot.reply(message, 'sup')
 })
 
-controller.hears(['hello', 'hi', 'sup', 'howdy', 'yo'], ['direct_mention'], function (bot, message) {
+// DM listener
+controller.hears(['hello', 'hi', 'sup', 'howdy', 'yo'], ['direct_message'], function (bot, message) {
   bot.reply(message, 'Wuddup.')
   bot.reply(message, 'It\'s nice to talk to you directly.')
 })
