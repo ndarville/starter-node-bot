@@ -1,23 +1,12 @@
 name: robotto
 description: A simple node.js starter bot for Beep Boop
 avatar: resources/avatar.png
+screenshots:
+  - screenshot: resources/screenshot-translation.png
 config:
   - name: GOOGLE_TOKEN
     friendly_name: Google API key
     info: API key used for Google Translate
     type: secret
     global: true
-#background: resources/background.png
-#config:
-#  - name: OPTION
-#    friendly_name: Some Unnecessary Option
-#    info: This is an unnecessary option
-#    default: the default value
-#  - name: SECRET
-#    friendly_name: Shhhh
-#    info: This is an secret option
-#    type: secret
-#    default: not secret though
-#screenshots:
-#  - screenshot: resources/screenshot1.png
-#  - screenshot: resources/screenshot2.jpg
+# background: resources/background.png
