@@ -72,12 +72,15 @@ controller.hears(["attachment"], ["direct_message", "direct_mention"], function 
 var googleTranslate = require("google-translate")(process.env.GOOGLE_TOKEN);
 
 controller.hears(["translate", ".*"], ["direct_message", "direct_mention"], function (bot, message) {
-    googleTranslate.translate(message, "da", "en", function(err, translation) {
+    message.text = message.text.replace("@robotto ", "");
+    message.text = message.text.replace("translate ", "");
+
+    googleTranslate.translate(message.text, "en", function(err, translation) {
         try {
             bot.reply(message, ":flag-dk: => " + translation.translatedText);
         }
         catch (err) {
-            bot.reply(message, err.toString());
+            bot.reply(message, err);
         }
     });
 });
