@@ -65,14 +65,10 @@ controller.hears(["attachment"], ["direct_message", "direct_mention"], function 
   })
 })
 
-controller.hears(".*", ["direct_message", "direct_mention"], function (bot, message) {
-  bot.reply(message, "Sorry <@" + message.user + ">, I don\'t understand. \n")
-})
-
 // Custom scripts
 // ==============
 
-// Interpreter: translates Danish to English
+//=> Interpreter: translates Danish to English
 var googleTranslate = require("google-translate")(process.env.GOOGLE_TOKEN);
 
 controller.hears(["translate", ".*"], ["direct_message", "direct_mention"], function (bot, message) {
@@ -85,3 +81,9 @@ controller.hears(["translate", ".*"], ["direct_message", "direct_mention"], func
         }
     });
 });
+// <=
+
+// This goes by the end of the file; it works as an "else" function for listener events.
+controller.hears(".*", ["direct_message", "direct_mention"], function (bot, message) {
+  bot.reply(message, "Sorry <@" + message.user + ">, I don\'t understand. \n")
+})
