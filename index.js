@@ -69,7 +69,15 @@ controller.hears(["attachment"], ["direct_message", "direct_mention"], function 
 // ==============
 
 //=> Interpreter: translates Danish to English
-var googleTranslate = require("google-translate")(process.env.GOOGLE_TOKEN);
+
+// Expect a GOOGLE_TOKEN environment variable
+var googleToken = process.env.GOOGLE_TOKEN;
+if (!googleToken) {
+    console.error("GOOGLE_TOKEN is required!")
+    process.exit(1)
+}
+
+var googleTranslate = require("google-translate")(googleToken);
 
 controller.hears(["translate", ".*"], ["direct_message", "direct_mention"], function (bot, message) {
     message.text = message.text.replace("@robotto ", "");
