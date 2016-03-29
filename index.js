@@ -79,11 +79,8 @@ if (!googleToken) {
 
 var googleTranslate = require("google-translate")(googleToken);
 
-controller.hears(["translate", ".*"], ["direct_message", "direct_mention"], function (bot, message) {
-    message.text = message.text.replace("@robotto ", "");
-    message.text = message.text.replace("translate ", "");
-
-    googleTranslate.translate(message.text, "en", function(err, translation) {
+controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function (bot, message) {
+    googleTranslate.translate(message.match[1], "en", function(err, translation) {
         try {
             bot.reply(message, ":flag-dk: => " + translation.translatedText);
         }
