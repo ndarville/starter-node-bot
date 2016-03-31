@@ -18,6 +18,7 @@ bot.startRTM(function (err, bot, payload) {
     }
 });
 
+// Join message
 controller.on("bot_channel_join", function (bot, message) {
     bot.reply(message, "I'm here!");
 });
@@ -33,6 +34,7 @@ controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], func
     bot.reply(message, "It\'s nice to talk to you directly.");
 });
 
+// Help message
 controller.hears("help", ["direct_message", "direct_mention"], function (bot, message) {
     var help = "I will respond to the following messages: \n" +
         "`bot hi` for a simple message.\n" +
