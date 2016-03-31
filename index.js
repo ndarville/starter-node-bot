@@ -33,10 +33,6 @@ controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], func
     bot.reply(message, "It\'s nice to talk to you directly.");
 });
 
-controller.hears(".*", ["mention"], function (bot, message) {
-    bot.reply(message, "You really do care about me. :heart:");
-});
-
 controller.hears("help", ["direct_message", "direct_mention"], function (bot, message) {
     var help = "I will respond to the following messages: \n" +
         "`bot hi` for a simple message.\n" +
