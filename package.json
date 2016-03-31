@@ -15,7 +15,10 @@
     "bot",
     "slack"
   ],
-  "author": "Niclas Darville",
+  "author": {
+    "name": "Niclas Darville",
+    "url": "https://ndarville.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ndarville/starter-node-bot/issues"
