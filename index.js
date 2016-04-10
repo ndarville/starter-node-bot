@@ -9,33 +9,33 @@ if (!slackToken) {
 
 var controller = Botkit.slackbot();
 var bot = controller.spawn({
-    token: slackToken
+    "token": slackToken
 });
 
-bot.startRTM(function (err, bot, payload) {
+bot.startRTM(function(err, bot, payload) {
     if (err) {
         throw new Error("Could not connect to Slack");
     }
 });
 
 // Join message
-controller.on("bot_channel_join", function (bot, message) {
+controller.on("bot_channel_join", function(bot, message) {
     bot.reply(message, "I'm here!");
 });
 
 // Mention listener
-controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_mention"], function (bot, message) {
+controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_mention"], function(bot, message) {
     bot.reply(message, "sup");
 });
 
 // DM listener
-controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], function (bot, message) {
+controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], function(bot, message) {
     bot.reply(message, "Wuddup.");
     bot.reply(message, "It\'s nice to talk to you directly.");
 });
 
 // Help message
-controller.hears("help", ["direct_message", "direct_mention"], function (bot, message) {
+controller.hears("help", ["direct_message", "direct_mention"], function(bot, message) {
     var help = "I will respond to the following messages: \n" +
         "`bot hi` for a simple message.\n" +
         "`bot translate [words]` to translate anything into English.\n" +
@@ -57,7 +57,7 @@ if (!googleToken) {
 
 var googleTranslate = require("google-translate")(googleToken);
 
-controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function (bot, message) {
+controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     googleTranslate.translate(message.match[1], "da", "en", function(err, translation) {
         try {
             bot.reply(message, ":flag-dk: => " + translation.translatedText);
@@ -70,6 +70,6 @@ controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], fun
 // <=
 
 // This goes by the end of the file; it works as an "else" function for listener events.
-controller.hears(".*", ["direct_message", "direct_mention"], function (bot, message) {
+controller.hears(".*", ["direct_message", "direct_mention"], function(bot, message) {
     bot.reply(message, "Sorry <@" + message.user + ">, I don\'t understand. \n");
 });
