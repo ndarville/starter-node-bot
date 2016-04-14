@@ -87,23 +87,25 @@ var fxSettingsIsBroken = true;
 
 oxr.set({"app_id": oxrToken});
 
+// Takes a number and converts it from USD to DKK
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
         try {
+            fx.rates = oxr.rates,
+            fx.base = oxr.base;
+
+            // Compute based on `message`---in future version
             // fromCur = "",
             // toCur = "",
             num = message.match[1];
 
-            fx.rates = oxr.rates,
-            fx.base = oxr.base;
-
-            if (fxSettingsIsBroken) {
+            if (fxSettingsIsBroken) { // Long conversion with explicit currencies
                 fromCur = fx.settings.from, //  message.from || fx.settings.from
                 toCur = fx.settings.to; // message.to || fx.settings.to;
 
-                bot.reply(message, fx(num).from(fromCur).to(toCur));
+                bot.reply(message, fx(num).from(fromCur).to(toCur) + " " + toCur);
             }
-            else {
+            else { // Shorthand conversion with implied currencies
                 bot.reply(message, (fx(num)));
             }
         }
