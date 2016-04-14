@@ -90,16 +90,16 @@ oxr.set({"app_id": oxrToken});
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
         try {
-            fromCur = "",
-            toCur = "",
+            // fromCur = "",
+            // toCur = "",
             num = message.match[1];
 
             fx.rates = oxr.rates,
             fx.base = oxr.base;
 
             if (fxSettingsIsBroken) {
-                fromCur = message.from || fx.settings.from,
-                toCur = message.to || fx.settings.to;
+                fromCur = fx.settings.from, //  message.from || fx.settings.from
+                toCur = fx.settings.to; // message.to || fx.settings.to;
 
                 bot.reply(message, fx(num).from(fromCur).to(toCur));
             }
