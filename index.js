@@ -103,7 +103,9 @@ controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], funct
                 fromCur = fx.settings.from, //  message.from || fx.settings.from
                 toCur = fx.settings.to; // message.to || fx.settings.to;
 
-                bot.reply(message, fx(num).from(fromCur).to(toCur) + " " + toCur);
+                result = Math.round(fx(num).from(fromCur).to(toCur));
+
+                bot.reply(message, result + " " + toCur);
             }
             else { // Shorthand conversion with implied currencies
                 bot.reply(message, (fx(num)));
