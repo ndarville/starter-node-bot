@@ -89,27 +89,27 @@ oxr.set({"app_id": oxrToken});
 
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
-        // try {
-        fromCur = "",
-        toCur = "",
-        num = message.match[1];
+        try {
+            fromCur = "",
+            toCur = "",
+            num = message.match[1];
 
-        fx.rates = oxr.rates;
-        fx.base = oxr.base;
+            fx.rates = oxr.rates,
+            fx.base = oxr.base;
 
-        // if (fxSettingsIsBroken) {
-            fromCur = message.from || fx.settings.from;
-            toCur = message.to || fx.settings.to;
+            if (fxSettingsIsBroken) {
+                fromCur = message.from || fx.settings.from,
+                toCur = message.to || fx.settings.to;
 
-            bot.reply(message, fx(num).from(fromCur).to(toCur));
-        // }
-        // else { bot.reply(message, (fx(num))); }
-
-        // bot.reply(message, fx(100).from("HKD").to("GBP"));
-        // }
-        // catch (err) {
-        //     bot.reply(message, err);
-        // }
+                bot.reply(message, fx(num).from(fromCur).to(toCur));
+            }
+            else {
+                bot.reply(message, (fx(num)));
+            }
+        }
+        catch (err) {
+            bot.reply(message, err);
+        }
     });
 });
 // <=
