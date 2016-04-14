@@ -6,12 +6,12 @@ screenshots:
 config:
   - name: GOOGLE_TOKEN
     friendly_name: Google API key
-    info: API key used for Google Translate
+    info: API key used for Google Translate.
     type: secret
     global: true
   - name: OXR_TOKEN
     friendly_name: Open Exchange Rates API key
-    info: API key used for currency conversion
+    info: API key used for currency conversion.
     type: secret
     global: true
 # background: resources/background.png
