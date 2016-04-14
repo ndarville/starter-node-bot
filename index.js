@@ -38,6 +38,7 @@ controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], func
 controller.hears("help", ["direct_message", "direct_mention"], function(bot, message) {
     var help = "I will respond to the following messages: \n" +
         "`bot hi` for a simple message.\n" +
+        "`bot convert [number]` to convert DKK to USD.\n" +
         "`bot translate [words]` to translate anything into English.\n" +
         "`bot help` to see this again.";
     bot.reply(message, help);
