@@ -26,6 +26,7 @@
   "homepage": "https://github.com/ndarville/starter-node-bot#readme",
   "dependencies": {
     "botkit": "0.0.5",
+    "d3-format": "^0.5.1",
     "google-translate": "^1.0.6",
     "money": "^0.2.0",
     "open-exchange-rates": "^0.3.0"

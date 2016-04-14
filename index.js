@@ -81,12 +81,15 @@ if (!oxrToken) {
 }
 
 var oxr = require("open-exchange-rates"),
-    fx = require("money");
+    fx = require("money"),
+    d3Format = require("d3-format");
 
 fx.settings = {"from": "DKK", "to": "USD"}; //! Broken
 var fxSettingsIsBroken = true;
 
 oxr.set({"app_id": oxrToken});
+
+format = d3Format.format(",.3s");
 
 // Takes a number and converts it from USD to DKK
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
@@ -104,7 +107,7 @@ controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], funct
                 fromCur = fx.settings.from, //  message.from || fx.settings.from
                 toCur = fx.settings.to; // message.to || fx.settings.to;
 
-                result = Math.round(fx(num).from(fromCur).to(toCur));
+                result = format(fx(num).from(fromCur).to(toCur));
 
                 bot.reply(message, result + " " + toCur);
             }
