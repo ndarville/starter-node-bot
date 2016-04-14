@@ -9,4 +9,9 @@ config:
     info: API key used for Google Translate
     type: secret
     global: true
+  - name: OXR_TOKEN
+    friendly_name: Open Exchange Rates API key
+    info: API key used for currency conversion
+    type: secret
+    global: true
 # background: resources/background.png

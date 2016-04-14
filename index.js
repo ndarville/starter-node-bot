@@ -69,6 +69,51 @@ controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], fun
 });
 // <=
 
+//=> Converter: converts currencies
+
+// Use openexchangerates.com for up-to-date rates
+// Expect an OXR_TOKEN environment variable
+var oxrToken = process.env.OXR_TOKEN;
+if (!oxrToken) {
+    console.error("OXR_TOKEN is required!");
+    process.exit(1);
+}
+
+var oxr = require("open-exchange-rates"),
+    fx = require("money");
+
+fx.settings = {"from": "DKK", "to": "USD"}; //! Broken
+var fxSettingsIsBroken = true;
+
+oxr.set({"app_id": oxrToken});
+
+controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
+    oxr.latest(function() {
+        // try {
+        fromCur = "",
+        toCur = "",
+        num = message.match[1];
+
+        fx.rates = oxr.rates;
+        fx.base = oxr.base;
+
+        // if (fxSettingsIsBroken) {
+            fromCur = message.from || fx.settings.from;
+            toCur = message.to || fx.settings.to;
+
+            bot.reply(message, fx(num).from(fromCur).to(toCur));
+        // }
+        // else { bot.reply(message, (fx(num))); }
+
+        // bot.reply(message, fx(100).from("HKD").to("GBP"));
+        // }
+        // catch (err) {
+        //     bot.reply(message, err);
+        // }
+    });
+});
+// <=
+
 // This goes by the end of the file; it works as an "else" function for listener events.
 controller.hears(".*", ["direct_message", "direct_mention"], function(bot, message) {
     bot.reply(message, "Sorry <@" + message.user + ">, I don\'t understand. \n");

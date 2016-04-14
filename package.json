@@ -1,6 +1,6 @@
 {
   "name": "Robotto",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A sample Beep Boop Node.js Slackbot",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,9 @@
   "homepage": "https://github.com/ndarville/starter-node-bot#readme",
   "dependencies": {
     "botkit": "0.0.5",
-    "google-translate": "^1.0.6"
-  }
+    "currency": "^3.0.0",
+    "google-translate": "^1.0.6",
+    "open-exchange-rates": "^0.3.0"
+  },
+  "engine": "node 0.4.1"
 }
