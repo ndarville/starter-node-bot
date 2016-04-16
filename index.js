@@ -39,6 +39,7 @@ controller.hears("help", ["direct_message", "direct_mention"], function(bot, mes
     var help = "I will respond to the following messages: \n" +
         "`bot hi` for a simple message.\n" +
         "`bot convert [number]` to convert DKK to USD.\n" +
+        "`bot convert from [number] [currency1] to [currency2]` to convert a currency.\n" +
         "`bot translate [words]` to translate anything into English.\n" +
         "`bot help` to see this again.";
     bot.reply(message, help);
@@ -89,16 +90,39 @@ var fxSettingsIsBroken = true;
 
 oxr.set({"app_id": oxrToken});
 
-format = d3Format.format(",.3s");
+var format = d3Format.format(",.3s"),
+    currencyPattern = /([+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?) (\w{3}) to (\w{3})/g;
 
-// Takes a number and converts it from USD to DKK
+// Takes a value, an input currency, and returns an output currency
+controller.hears(["^convert from (.*)"], ["direct_message", "direct_mention"], function(bot, message) {
+    oxr.latest(function() {
+        try {
+            fx.rates = oxr.rates,
+            fx.base = oxr.base;
+
+            match = currencyPattern.exec(message.match[1]);
+
+            num = match[0],
+            fromCur = match[1],
+            toCur = match[2];
+
+            result = format(fx(num).from(fromCur).to(toCur));
+
+            bot.reply(message, result + " " + toCur);
+        }
+        catch (err) {
+            bot.reply(message, err);
+        }
+    });
+});
+
+// Converts a number from USD to DKK
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
         try {
             fx.rates = oxr.rates,
             fx.base = oxr.base;
 
-            // Compute based on `message`---in future version
             // fromCur = "",
             // toCur = "",
             num = message.match[1];
