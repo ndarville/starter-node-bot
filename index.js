@@ -102,9 +102,10 @@ controller.hears(["^convert from (.*)"], ["direct_message", "direct_mention"], f
 
             match = currencyPattern.exec(message.match[1]);
 
+            // Uppercase currencies are required---apparently
             num = match[1],
-            fromCur = match[2],
-            toCur = match[3];
+            fromCur = match[2].toUpperCase(),
+            toCur = match[3].toUpperCase();
 
             result = format(fx(num).from(fromCur).to(toCur));
 
