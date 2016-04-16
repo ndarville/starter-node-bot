@@ -91,6 +91,7 @@ var fxSettingsIsBroken = true;
 oxr.set({"app_id": oxrToken});
 
 var format = d3Format.format(",.3s"),
+    // cf. stackoverflow.com/a/354216
     currencyPattern = /\b([+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?) (\w{3}) to (\w{3})\b/g;
 
 // Takes a value, an input currency, and returns an output currency
