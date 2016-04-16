@@ -110,7 +110,7 @@ controller.hears(["^convert from (.*)$"], ["direct_message", "direct_mention"], 
 
             result = format(fx(num).from(fromCur).to(toCur));
 
-            bot.reply(message, "*" + result + "*" + " " + toCur + " (=" + format(num) + " " + fromCur + ")");
+            bot.reply(message, "*" + result + "*" + " " + toCur + " _(=" + format(num) + " " + fromCur + ")_");
         }
         catch (err) {
             bot.reply(message, err);
