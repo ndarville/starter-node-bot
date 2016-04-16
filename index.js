@@ -62,7 +62,7 @@ var googleTranslate = require("google-translate")(googleToken);
 controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     googleTranslate.translate(message.match[1], "da", "en", function(err, translation) {
         try {
-            bot.reply(message, ":flag-dk: => " + translation.translatedText);
+            bot.reply(message, ":flag-dk: => " + "*" + translation.translatedText + "*");
         }
         catch (err) {
             bot.reply(message, err);
