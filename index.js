@@ -94,7 +94,7 @@ var format = d3Format.format(",.3s"),
     currencyPattern = /([+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?) (\w{3}) to (\w{3})/g;
 
 // Takes a value, an input currency, and returns an output currency
-controller.hears(["^convert from (.*)"], ["direct_message", "direct_mention"], function(bot, message) {
+controller.hears(["^convert from (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
         try {
             fx.rates = oxr.rates,
