@@ -102,9 +102,9 @@ controller.hears(["^convert from (.*)"], ["direct_message", "direct_mention"], f
 
             match = currencyPattern.exec(message.match[1]);
 
-            num = match[0],
-            fromCur = match[1],
-            toCur = match[2];
+            num = match[1],
+            fromCur = match[2],
+            toCur = match[3];
 
             result = format(fx(num).from(fromCur).to(toCur));
 
