@@ -122,23 +122,28 @@ controller.hears(["^convert from (.*)$"], ["direct_message", "direct_mention"], 
 controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     oxr.latest(function() {
         try {
-            fx.rates = oxr.rates,
-            fx.base = oxr.base;
-
-            // fromCur = "",
-            // toCur = "",
-            num = message.match[1];
-
-            if (fxSettingsIsBroken) { // Long conversion with explicit currencies
-                fromCur = fx.settings.from, //  message.from || fx.settings.from
-                toCur = fx.settings.to; // message.to || fx.settings.to;
-
-                result = format(fx(num).from(fromCur).to(toCur));
-
-                bot.reply(message, result + " " + toCur);
+            if (message.match[1].indexOf(" to ") !== -1) {
+                bot.reply(message, "Oops, you used the wrong syntax. Try `convert from (...) to (...)`.")
             }
-            else { // Shorthand conversion with implied currencies
-                bot.reply(message, (fx(num)));
+            else {
+                fx.rates = oxr.rates,
+                fx.base = oxr.base;
+
+                // fromCur = "",
+                // toCur = "",
+                num = message.match[1];
+
+                if (fxSettingsIsBroken) { // Long conversion with explicit currencies
+                    fromCur = fx.settings.from, //  message.from || fx.settings.from
+                    toCur = fx.settings.to; // message.to || fx.settings.to;
+
+                    result = format(fx(num).from(fromCur).to(toCur));
+
+                    bot.reply(message, result + " " + toCur);
+                }
+                else { // Shorthand conversion with implied currencies
+                    bot.reply(message, (fx(num)));
+                }
             }
         }
         catch (err) {
