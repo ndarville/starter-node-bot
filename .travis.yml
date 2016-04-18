@@ -2,7 +2,8 @@ language: node
 node_js:
     - 0.4.1
 
-install: npm install
+install:
+    - npm install
 
 notifications:
   email:
