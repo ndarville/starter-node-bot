@@ -4,7 +4,8 @@
   "description": "A sample Beep Boop Node.js Slackbot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "travis-lint .travis.yml"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,6 @@
     "url": "https://github.com/ndarville/starter-node-bot/issues"
   },
   "homepage": "https://github.com/ndarville/starter-node-bot#readme",
-
-  "scripts": {
-    "test": "travis-lint .travis.yml"
-  },
 
   "engine": "node 0.4.1",
   "dependencies": {
