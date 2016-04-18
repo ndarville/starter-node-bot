@@ -3,7 +3,7 @@ Robotto [![Build Status][build-icon]][build-link]
 
 ## Overview ##
 
-A simple starting point for creating a Beep Boop hostable, Node.js based Slack bot with botkit
+A simple starting point for creating a Beep Boop hostable, Node.js based Slack bot with Botkit.
 
 Visit [Beep Boop][] to get the scoop on the the Beep Boop hosting platform. There is also the [Slack API documentation][].
 
@@ -40,7 +40,7 @@ If you have linked your local repo with the Beep Boop service (check the [projec
 
 ## Acknowledgements ##
 
-This code uses the [botkit][] npm module by the fine folks at Howdy.ai.
+This code uses the [Botkit][] npm module by the fine folks at Howdy.ai.
 
 ## License ##
 
