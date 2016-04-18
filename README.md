@@ -1,4 +1,4 @@
-Robotto
+Robotto [![Build Status][build-icon]][build-link]
 =======
 
 ## Overview ##
@@ -47,6 +47,8 @@ This code uses the [botkit][] npm module by the fine folks at Howdy.ai.
 See the [LICENSE][] file (MIT).
 
 
+[build-link]: https://travis-ci.org/ndarville/starter-node-bot
+[build-icon]: https://travis-ci.org/ndarville/starter-node-bot.svg
 [beep boop]: https://beepboophq.com/docs/article/overview
 [slack api documentation]: https://api.slack.com
 [project list]: https://beepboophq.com/0_o/my-projects

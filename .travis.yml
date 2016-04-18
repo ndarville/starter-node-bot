@@ -1,0 +1,9 @@
+language: node
+node_js: "0.4.1"
+
+install: npm install
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
