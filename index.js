@@ -163,7 +163,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
 
         bot.startConversation(message, function(err, convo) {
             for (key in dict) {
-                convo.say(key + ": " + dict[key]);
+                convo.say(dict[key] + ": " + key);
             }
         });
     }
