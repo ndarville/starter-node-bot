@@ -159,7 +159,13 @@ var nlp = require("nlp_compromise");
 // Conjugates a verb
 controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     try {
-        bot.reply(message, nlp.verb(message.match[1]).conjugate());
+        var dict = nlp.verb(message.match[1]).conjugate();
+
+        bot.startConversation(message, function(err, convo) {
+            for (key in dict) {
+                convo.say(key + ": " + dict[key]);
+            }
+        });
     }
     catch (err) {
         bot.reply(message, err);
