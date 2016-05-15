@@ -153,6 +153,21 @@ controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], funct
 });
 // <=
 
+//=> Inflector
+var nlp = require("nlp_compromise");
+
+// Conjugates a verb
+controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
+    try {
+        bot.reply(message, nlp.verb(message.match[1]).conjugate());
+    }
+    catch (err) {
+        bot.reply(message, err);
+    }
+});
+
+// <=
+
 // This goes by the end of the file; it works as an "else" function for listener events.
 controller.hears(".*", ["direct_message", "direct_mention"], function(bot, message) {
     bot.reply(message, "Sorry <@" + message.user + ">, I don\'t understand. \n");
