@@ -42,11 +42,11 @@ controller.hears(["hello", "hi", "sup", "howdy", "yo"], ["direct_message"], func
 // Help message
 controller.hears("help", ["direct_message", "direct_mention"], function(bot, message) {
     var help = "I will respond to the following messages: \n" +
-        "`bot hi` for a simple message.\n" +
+        "`bot conjugate [infinitive verb]` to conjugate an English verb.\n" +
         "`bot convert [number]` to convert DKK to USD.\n" +
         "`bot convert from [number] [currency1] to [currency2]` to convert a currency.\n" +
         "`bot translate [words]` to translate anything into English.\n" +
-        "`bot conjugate [infinitive verb]` to conjugate an English verb.\n" +
+
         "`bot help` to see this again.";
     bot.reply(message, help);
 });
