@@ -5,6 +5,10 @@ var config = {
     "color": "#cfc"
 };
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN;
 if (!slackToken) {
@@ -179,7 +183,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
                     "color"    : config.color,
                     "fields"   : Object.keys(dict).map(function(key) {
                         return {
-                            "title": key.replace("_", " "),
+                            "title": capitalizeFirstLetter(key).replace("_", " "),
                             "value": dict[key],
                             "short": false
                         };
