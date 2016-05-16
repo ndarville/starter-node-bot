@@ -181,7 +181,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
                         return {
                             "title": key.replace("_", " "),
                             "value": dict[key],
-                            "short": true
+                            "short": false
                         };
                     })
                 }]
