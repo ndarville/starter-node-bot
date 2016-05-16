@@ -159,13 +159,19 @@ var nlp = require("nlp_compromise");
 // Conjugates a verb
 controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     try {
-        var dict = nlp.verb(message.match[1]).conjugate();
-
-        bot.startConversation(message, function(err, convo) {
-            for (key in dict) {
-                convo.say(dict[key] + ": " + key);
+        if (message.match[1].indexOf(" to ") !== -1) {
+                bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.")
             }
-        });
+        }
+        else {
+            var dict = nlp.verb(message.match[1]).conjugate();
+
+            bot.startConversation(message, function(err, convo) {
+                for (key in dict) {
+                    convo.say(dict[key] + ": " + key);
+                }
+            });
+        }
     }
     catch (err) {
         bot.reply(message, err);
