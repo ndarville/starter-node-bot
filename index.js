@@ -161,8 +161,7 @@ var nlp = require("nlp_compromise");
 controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     try {
         if (message.match[1].indexOf(" to ") !== -1) {
-                bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.")
-            }
+            bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.");
         }
         else {
             var dict = nlp.verb(message.match[1]).conjugate();
