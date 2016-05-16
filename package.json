@@ -4,12 +4,12 @@
   "description": "A sample Beep Boop Node.js Slackbot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "travis-lint .travis.yml"
+    "start" : "node index.js",
+    "test"  : "travis-lint .travis.yml"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ndarville/starter-node-bot.git"
+    "type" : "git",
+    "url"  : "git+https://github.com/ndarville/starter-node-bot.git"
   },
   "keywords": [
     "slackbot",
@@ -17,8 +17,8 @@
     "slack"
   ],
   "author": {
-    "name": "Niclas Darville",
-    "url": "https://ndarville.com"
+    "name" : "Niclas Darville",
+    "url"  : "https://ndarville.com"
   },
   "license": "MIT",
   "bugs": {
