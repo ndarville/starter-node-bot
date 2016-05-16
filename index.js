@@ -172,7 +172,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
             var dict = nlp.verb(message.match[1]).conjugate();
 
             bot.reply(message, {
-                "attachments": {
+                "attachments": [{
                     "fallback" : "Conjugation of _\"to " + message.match[1] + "\"_",
                     "text"     : "_to " + message.match[1] + "_",
                     "mrkdwn_in": ["fallback", "text"],
@@ -184,7 +184,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
                             "short": true
                         };
                     })
-                }
+                }]
             });
         }
     }
