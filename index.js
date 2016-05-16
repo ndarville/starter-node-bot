@@ -124,7 +124,7 @@ controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], funct
     oxr.latest(function() {
         try {
             if (message.match[1].indexOf(" to ") !== -1) {
-                bot.reply(message, "Oops, you used the wrong syntax. Try `convert from (...) to (...)`.")
+                bot.reply(message, "Oops, you used the wrong syntax. Try `convert from (...) to (...)`.");
             }
             else {
                 fx.rates = oxr.rates,
@@ -167,7 +167,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
             var dict = nlp.verb(message.match[1]).conjugate();
 
             bot.startConversation(message, function(err, convo) {
-                for (key in dict) {
+                for (var key in dict) {
                     convo.say(dict[key] + ": " + key);
                 }
             });
