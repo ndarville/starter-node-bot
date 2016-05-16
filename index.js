@@ -173,14 +173,15 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
 
             bot.reply(message, {
                 "attachments": {
-                    "fallback" : "Conjugation of \"to " + message.match[1] + "\"",
-                    "text"     : "to" + " " + message.match[1],
+                    "fallback" : "Conjugation of _\"to " + message.match[1] + "\"_",
+                    "text"     : "_to " + message.match[1] + "_",
+                    "mrkdwn_in": ["fallback", "text"],
                     "color"    : config.color,
                     "fields"   : Object.keys(dict).map(function(key) {
                         return {
                             "title": key.replace("_", " "),
                             "value": dict[key],
-                            "short": false
+                            "short": true
                         };
                     })
                 }
