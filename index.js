@@ -1,5 +1,10 @@
 var Botkit = require("botkit");
 
+var config = {
+    "robot": "Robotto",
+    "color": "#cfc"
+};
+
 // Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN;
 if (!slackToken) {
@@ -166,9 +171,18 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
         else {
             var dict = nlp.verb(message.match[1]).conjugate();
 
-            bot.startConversation(message, function(err, convo) {
-                for (var key in dict) {
-                    convo.say(dict[key] + ": " + key);
+            bot.reply(message, {
+                "attachments": {
+                    "fallback" : "Conjugation of \"to " + message.match[1] + "\"",
+                    "text"     : "to" + " " + message.match[1],
+                    "color"    : config.color,
+                    "fields"   : Object.keys(dict).map(function(key) {
+                        return {
+                            "title": key.replace("_", " "),
+                            "value": dict[key],
+                            "short": false
+                        };
+                    })
                 }
             });
         }
