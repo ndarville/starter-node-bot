@@ -173,23 +173,16 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
             bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.");
         }
         else {
-            var dict = nlp.verb(message.match[1]).conjugate();
+            var dict = nlp.verb(message.match[1]).conjugate(),
+                response = "";
 
-            bot.reply(message, {
-                "attachments": [{
-                    "fallback" : "Conjugation of _\"to " + message.match[1] + "\"_",
-                    "pretext"  : "`" + message.match[1] + "`",
-                    "mrkdwn_in": ["fallback", "pretext"],
-                    "color"    : config.color,
-                    "fields"   : Object.keys(dict).map(function(key) {
-                        return {
-                            "title": capitalizeFirstLetter(key).replace("_", " "),
-                            "value": dict[key],
-                            "short": false
-                        };
-                    })
-                }]
-            });
+            // Slack trims the trailing newline
+            Object.keys(dict).map(function(key) {
+                return response += "*" + capitalizeFirstLetter(key).replace("_", " ") + ":*" + \
+                dict[key] + "\n";
+            ]);
+
+            bot.reply(message, response);
         }
     }
     catch (err) {
