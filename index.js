@@ -178,7 +178,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
 
             // Slack trims the trailing newline
             Object.keys(dict).map(function(key) {
-                return response += "*" + capitalizeFirstLetter(key).replace("_", " ") + ":*" + " " + dict[key] + "\n";
+                return response += dict[key] + "\n";
             });
 
             bot.reply(message, response);
