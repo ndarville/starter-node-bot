@@ -173,13 +173,12 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
             bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.");
         }
         else {
-            var dict = nlp.verb(message.match[1]).conjugate(),
-                response = "";
+            var dict = nlp.verb(message.match[1]).conjugate();
 
             // Slack trims the trailing newline
-            Object.keys(dict).map(function(key) {
-                return response += dict[key] + "\n";
-            });
+            response = Object.keys(dict).map(function(key) {
+                return dict[key];
+            }).sort().join("\n");
 
             bot.reply(message, response);
         }
