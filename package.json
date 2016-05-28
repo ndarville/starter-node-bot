@@ -28,12 +28,12 @@
 
   "engine": "node 0.4.1",
   "dependencies": {
-    "botkit"              : "~0.1.1",
+    "botkit"              : "~0.2.0",
     "d3-format"           : "~0.5.1",
     "google-translate"    : "~1.0.6",
     "money"               : "~0.2.0",
     "open-exchange-rates" : "~0.3.0",
-    "nlp_compromise"      : "4.10.5"
+    "nlp_compromise"      : "4.20.0"
   },
   "devDependencies": {
     "travis-lint": "^1.0.0"
