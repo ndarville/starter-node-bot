@@ -1,4 +1,4 @@
-Robotto [![Build Status][build-icon]][build-link] [![devDependency Status][]](https://david-dm.org/ndarville/starter-node-bot#info=devDependencies)
+Robotto [![Build Status][build-icon]][build-link] [![dependency status][]](https://david-dm.org/ndarville/starter-node-bot#info=dependencies)
 =======
 
 ## Overview ##
@@ -49,7 +49,7 @@ See the [LICENSE][] file (MIT).
 
 [build-link]: https://travis-ci.org/ndarville/starter-node-bot
 [build-icon]: https://travis-ci.org/ndarville/starter-node-bot.svg
-[devDependency Status]: https://david-dm.org/ndarville/starter-node-bot/dev-status.svg
+[dependency status]: https://david-dm.org/ndarville/starter-node-bot.svg
 [beep boop]: https://beepboophq.com/docs/article/overview
 [slack api documentation]: https://api.slack.com
 [project list]: https://beepboophq.com/0_o/my-projects
