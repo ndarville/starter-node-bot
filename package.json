@@ -1,12 +1,12 @@
 {
   "name": "Robotto",
-  "version": "1.3.6",
+  "version": "1.4.0",
   "description": "A sample Beep Boop Node.js Slackbot",
   "main": "index.js",
   "scripts": {
     "local" : "SLACK_TOKEN=$SLACK_TOKEN GOOGLE_TOKEN=$GOOGLE_TOKEN OXR_TOKEN=$OXR_TOKEN nodemon index.js",
     "start" : "node index.js",
-    "test"  : "travis-lint .travis.yml"
+    "test"  : "travis-lint .travis.yml && jest"
   },
   "repository": {
     "type" : "git",
@@ -39,6 +39,7 @@
   "devDependencies": {
     "hot-server"  : "*",
     "nodemon"     : "*",
-    "travis-lint" : "^1.0.0"
+    "travis-lint" : "^1.0.0",
+    "jest"        : "~16.0.2"
   }
 }
