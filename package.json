@@ -6,7 +6,7 @@
   "scripts": {
     "local" : "SLACK_TOKEN=$SLACK_TOKEN GOOGLE_TOKEN=$GOOGLE_TOKEN OXR_TOKEN=$OXR_TOKEN nodemon index.js",
     "start" : "node index.js",
-    "test"  : "travis-lint .travis.yml && jest"
+    "test"  : "travis-lint .travis.yml"
   },
   "repository": {
     "type" : "git",
