@@ -9,12 +9,13 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN;
-if (!slackToken) {
-    console.error("SLACK_TOKEN is required!");
-    process.exit(1);
-}
+var googleToken = process.env.GOOGLE_TOKEN;
+var oxrToken = process.env.OXR_TOKEN; // openexchangerates.com
+
+if (!slackToken)  { console.error("SLACK_TOKEN is required!"); process.exit(1); }
+if (!googleToken) { console.error("GOOGLE_TOKEN is required!"); process.exit(1); }
+if (!oxrToken)    { console.error("OXR_TOKEN is required!"); process.exit(1); }
 
 var controller = Botkit.slackbot();
 var bot = controller.spawn({
@@ -59,14 +60,6 @@ controller.hears("help", ["direct_message", "direct_mention"], function(bot, mes
 // ==============
 
 //=> Interpreter: translates Danish to English
-
-// Expect a GOOGLE_TOKEN environment variable
-var googleToken = process.env.GOOGLE_TOKEN;
-if (!googleToken) {
-    console.error("GOOGLE_TOKEN is required!");
-    process.exit(1);
-}
-
 var googleTranslate = require("google-translate")(googleToken);
 
 controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
@@ -82,15 +75,6 @@ controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], fun
 // <=
 
 //=> Converter: converts currencies
-
-// Use openexchangerates.com for up-to-date rates
-// Expect an OXR_TOKEN environment variable
-var oxrToken = process.env.OXR_TOKEN;
-if (!oxrToken) {
-    console.error("OXR_TOKEN is required!");
-    process.exit(1);
-}
-
 var oxr = require("open-exchange-rates"),
     fx = require("money"),
     d3Format = require("d3-format");
@@ -187,7 +171,6 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
         bot.reply(message, err);
     }
 });
-
 // <=
 
 // This goes by the end of the file; it works as an "else" function for listener events.
