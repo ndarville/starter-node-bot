@@ -1,5 +1,11 @@
 var Botkit = require("botkit");
 
+var googleTranslate = require("google-translate")(googleToken);
+var oxr = require("open-exchange-rates"),
+    fx = require("money"),
+    d3Format = require("d3-format");
+var nlp = require("nlp_compromise");
+
 var config = {
     "robot": "Robotto",
     "color": "#cfc"
@@ -60,8 +66,6 @@ controller.hears("help", ["direct_message", "direct_mention"], function(bot, mes
 // ==============
 
 //=> Interpreter: translates Danish to English
-var googleTranslate = require("google-translate")(googleToken);
-
 controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     googleTranslate.translate(message.match[1], "da", "en", function(err, translation) {
         try {
@@ -75,10 +79,6 @@ controller.hears(["^translate (.*)$"], ["direct_message", "direct_mention"], fun
 // <=
 
 //=> Converter: converts currencies
-var oxr = require("open-exchange-rates"),
-    fx = require("money"),
-    d3Format = require("d3-format");
-
 fx.settings = {"from": "DKK", "to": "USD"}; //! Broken
 var fxSettingsIsBroken = true;
 
@@ -148,8 +148,6 @@ controller.hears(["^convert (.*)$"], ["direct_message", "direct_mention"], funct
 // <=
 
 //=> Inflector
-var nlp = require("nlp_compromise");
-
 // Conjugates a verb
 controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], function(bot, message) {
     try {
