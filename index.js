@@ -30,10 +30,6 @@ bot.startRTM(function(err, bot, payload) {
     }
 });
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 // Join message
 controller.on("bot_channel_join", function(bot, message) {
     bot.reply(message, "I'm here!");
