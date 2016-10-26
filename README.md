@@ -27,7 +27,7 @@ Or, you can export your tokens as environment variables and run
 npm start
 ```
 
-If you aren’t planning on trying using the Google or OXR scripts, you can always just export a dummy environment variable:
+If you aren’t planning to use the Google or OXR scripts, you can always just export a dummy environment variable:
 
 ```sh
 export GOOGLE_TOKEN=foo
