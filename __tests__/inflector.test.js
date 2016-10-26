@@ -1,7 +1,7 @@
-require("../scripts/inflector");
+const inflector = require("../scripts/inflector");
 
 test("conjugates \"to travel\" and returns as array with newlines", () => {
-    expect(conjugate("travel")).toBe([
+    expect(inflector.conjugate("travel")).toBe([
         "had traveled",
         "have traveled",
         "travel",

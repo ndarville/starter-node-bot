@@ -1,6 +1,6 @@
 const nlp = require("nlp_compromise");
 
-conjugate = function(infinitive) {
+exports.conjugate = function(infinitive) {
     var dict = nlp.verb(infinitive).conjugate();
 
     // Slack trims the trailing newline
