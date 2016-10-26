@@ -17,21 +17,44 @@ Visit [Beep Boop][] to get the scoop on the the Beep Boop hosting platform. Ther
 ### Run locally ###
 
 ```sh
-npm install
-SLACK_TOKEN=<YOUR_SLACK_TOKEN> npm start
+yarn # or npm install
+SLACK_TOKEN=<YOUR_SLACK_TOKEN> GOOGLE_TOKEN=<YOUR_GOOGLE_TOKEN> OXR_TOKEN=<YOUR_OXR_TOKEN> npm start
 ```
 
-Things are looking good if the console prints something like:
+Or, you can export your tokens as environment variables and run
 
-    ** API CALL: https://slack.com/api/rtm.start
-    ** BOT ID:  witty  ...attempting to connect to RTM!
-    ** API CALL: https://slack.com/api/chat.postMessage
+```sh
+npm start
+```
+
+If you aren’t planning on trying using the Google or OXR scripts, you can always just export a dummy environment variable:
+
+```sh
+export GOOGLE_TOKEN=foo
+export OXR_TOKEN=bar
+```
+
+I don’t test the Google translate scripts, because the translation can change from day to day, so I generally just use a dummy environment variable for testing.
+
+After starting `index.js` you should get something like this:
+
+    [nodemon] 1.11.0
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching: *.*
+    [nodemon] starting `node index.js`
+    info: ** No persistent storage method specified! Data may be lost when process shuts down.
+    info: ** Setting up custom handlers for processing Slack messages
+    info: ** API CALL: https://slack.com/api/rtm.start
+    notice: ** BOT ID: nd ...attempting to connect to RTM!
+    notice: RTM websocket opened
+
+I prefer using nodemon to keep re-running the script with every change to catch errors, but you can alter the `start` script in `package.json` if you prefer to.
 
 ### Run locally in Docker ###
 
 ```sh
-docker build -t starter-node .`
-docker run --rm -it -e SLACK_TOKEN=<YOUR SLACK API TOKEN> starter-node
+docker build -t starter-node .
+docker run --rm -it -e SLACK_TOKEN=<YOUR_SLACK_TOKEN> GOOGLE_TOKEN=<YOUR_GOOGLE_TOKEN> OXR_TOKEN=<YOUR_OXR_TOKEN> starter-node
 ```
 
 ### Run in BeepBoop ###
