@@ -24,7 +24,7 @@ SLACK_TOKEN=<YOUR_SLACK_TOKEN> GOOGLE_TOKEN=<YOUR_GOOGLE_TOKEN> OXR_TOKEN=<YOUR_
 Or, you can export your tokens as environment variables and run
 
 ```sh
-npm start
+npm run local
 ```
 
 If you aren’t planning to use the Google or OXR scripts, you can always just export a dummy environment variable:
