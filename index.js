@@ -1,10 +1,11 @@
 var Botkit = require("botkit");
 
+const inflector = require("./scripts/inflector");
+
 var googleTranslate = require("google-translate")(googleToken);
 var oxr = require("open-exchange-rates"),
     fx = require("money"),
     d3Format = require("d3-format");
-var nlp = require("nlp_compromise");
 
 var config = {
     "robot": "Robotto",
@@ -151,14 +152,7 @@ controller.hears(["^conjugate (.*)$"], ["direct_message", "direct_mention"], fun
             bot.reply(message, "Oops, you used the wrong syntax. Try `conjugate [infinitive without \"to\"]`.");
         }
         else {
-            var dict = nlp.verb(message.match[1]).conjugate();
-
-            // Slack trims the trailing newline
-            response = Object.keys(dict).map(function(key) {
-                return dict[key];
-            }).sort().join("\n");
-
-            bot.reply(message, response);
+            bot.reply(message, inflector.conjugate(message.match[1]));
         }
     }
     catch (err) {
