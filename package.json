@@ -39,7 +39,6 @@
   "devDependencies": {
     "hot-server"  : "*",
     "nodemon"     : "*",
-    "travis-lint" : "^1.0.0",
-    "jest"        : "~16.0.2"
+    "travis-lint" : "^1.0.0"
   }
 }
