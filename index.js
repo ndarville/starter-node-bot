@@ -11,10 +11,6 @@ var config = {
     "color": "#cfc"
 };
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 var slackToken = process.env.SLACK_TOKEN;
 var googleToken = process.env.GOOGLE_TOKEN;
 var oxrToken = process.env.OXR_TOKEN; // openexchangerates.com
@@ -33,6 +29,10 @@ bot.startRTM(function(err, bot, payload) {
         throw new Error("Could not connect to Slack");
     }
 });
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // Join message
 controller.on("bot_channel_join", function(bot, message) {
