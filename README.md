@@ -1,6 +1,8 @@
 Robotto [![Build Status][build-icon]][build-link] [![dependency status][]](https://david-dm.org/ndarville/starter-node-bot#info=dependencies)
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ndarville/starter-node-bot.svg)](https://greenkeeper.io/)
+
 ## Overview ##
 
 A simple starting point for creating a Beep Boop hostable, Node.js based Slack bot with Botkit.

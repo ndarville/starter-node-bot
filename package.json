@@ -28,17 +28,17 @@
   "homepage": "https://github.com/ndarville/starter-node-bot#readme",
   "engine": "node 6.0.0",
   "dependencies": {
-    "botkit"              : "~0.2.2",
-    "d3-format"           : "~0.6.0",
+    "botkit"              : "~0.4.9",
+    "d3-format"           : "~1.0.2",
     "google-translate"    : "~1.0.6",
     "money"               : "~0.2.0",
     "open-exchange-rates" : "~0.3.0",
-    "nlp_compromise"      : "~6.3.1"
+    "nlp_compromise"      : "~6.5.3"
   },
   "devDependencies": {
     "hot-server"  : "*",
     "nodemon"     : "*",
     "travis-lint" : "^1.0.0",
-    "jest"        : "~16.0.2"
+    "jest"        : "~18.1.0"
   }
 }
